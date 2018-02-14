@@ -1,0 +1,37 @@
+lis = [1,9,3,5,6,2,0,4,7]
+n = len(lis)
+
+def mergesort(low,high):
+    if(low<high):
+       part = int((low + high)/2)
+       mergesort(low,part)
+       mergesort(part+1,high)
+       merge(low,part,high)
+
+
+def merge(low,part,high):
+    l = []
+    r = []
+    for i in range(low,part+1):
+	l.append(lis[low+i])
+    for i in range(part+1,high+1):
+	r.append(lis[part+i])
+    l.append(32767)
+    r.append(32767)
+    i=0
+    j=0
+    k=0
+    b = []
+    print(len(l),len(r))
+    while (i < len(l)-1 and j< len(r)-1):
+        if(l[i]<r[j]):
+	    b.append(l[i])
+	    i = i+1
+            k = k+1
+	else:
+            b.append(r[j])
+	    j = j+1
+            k = k+1
+        print(b)   
+mergesort(0,n-1)
+print(lis)
